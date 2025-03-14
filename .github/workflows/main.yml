@@ -27,7 +27,12 @@ jobs:
           input-path: 'app.zip'
           output-path: '${{ github.workspace }}'
 
-          
+       - name: Check remote URL
+         run: git remote -v
+
+      - name: Remove lock files
+        run: |
+          rm -f .git/index.lock
 
       - name: Commit and push extracted files
         run: |
