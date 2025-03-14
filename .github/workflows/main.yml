@@ -16,10 +16,10 @@ jobs:
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
           input-path: 'pemrogram.zip'
-          output-path: './pemrogram-web'  # Ekstrak langsung ke root
+          output-path: './Web-program/pemrogram-web'  # Ekstrak langsung ke root
 
       - name: Extract app.zip
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
           input-path: 'app.zip'
-          output-path: './pemrogram-web'  # Ekstrak langsung ke root
+          output-path: './Web-program/pemrogram-web'  # Ekstrak langsung ke root
