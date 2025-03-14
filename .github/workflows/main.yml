@@ -10,14 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: action/checkout@v2
 
       - name: Extract pemrogram-web.zip
-        uses: actions/extract-zip@v1
+        uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
-          zip_file: 'pemrogram-web.zip'
+          input-path: 'pemrogram-web.zip'
+          output-path: './'
 
       - name: Extract app.zip
-        uses: actions/extract-zip@v1
+        uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
-          zip_file: 'app.zip'
+          input-path: 'app.zip'
+          output-path: './'
