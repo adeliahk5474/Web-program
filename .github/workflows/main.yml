@@ -12,23 +12,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: List files
-        run: ls -la
-        
-      - name: Extract pemrogram.zip
+      - name: Extract pemrogram-web.zip
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
-          input-path: 'pemrogram.zip'
-          output-path: '${{ github.workspace }}'
+          input-path: 'pemrogram-web.zip'
+          output-path: '${{ github.workspace }}'  # Ekstrak langsung ke root
 
       - name: Extract app.zip
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
           input-path: 'app.zip'
-          output-path: '${{ github.workspace }}'
+          output-path: '${{ github.workspace }}'  # Ekstrak langsung ke root
 
-       - name: Check remote URL
-         run: git remote -v
+      - name: Check remote URL
+        run: git remote -v
 
       - name: Remove lock files
         run: |
@@ -39,7 +36,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Add extracted files"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "Add extracted files" || echo "Commit failed"
+            git push || echo "Push failed"
+          else
+            echo "No changes to commit."
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
