@@ -26,3 +26,15 @@ jobs:
         with:
           input-path: 'app.zip'
           output-path: '${{ github.workspace }}'
+
+          
+
+      - name: Commit and push extracted files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Add extracted files"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
