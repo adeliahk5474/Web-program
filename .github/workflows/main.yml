@@ -1,0 +1,29 @@
+
+```
+name: Extract ZIP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  extract-zip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Extract pemrogram-web.zip
+        uses: actions/extract-zip@v1
+        with:
+          zip_file: 'pemrogram-web.zip'
+          extract_dir: './web-program'
+
+      - name: Extract app.zip
+        uses: actions/extract-zip@v1
+        with:
+          zip_file: 'app.zip'
+          extract_dir: './web-program'
+```
+
