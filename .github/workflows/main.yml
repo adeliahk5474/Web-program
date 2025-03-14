@@ -24,6 +24,6 @@ jobs:
           input-path: 'app.zip'
           output-path: '${{ github.workspace }}/web-program/pemrogram-web'  #Absolute path
 
-        git add .github/workflows/your-workflow-file.yml
+        git add .github/workflows/main.yml
 git commit -m "Update output paths to use absolute paths for ZIP extraction"
 git push origin main
