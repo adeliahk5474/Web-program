@@ -19,10 +19,10 @@ jobs:
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
           input-path: 'pemrogram.zip'
-          output-path: './'
+          output-path: '${{ github.workspace }}'
 
       - name: Extract app.zip
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
           input-path: 'app.zip'
-          output-path: './'
+          output-path: '${{ github.workspace }}'
