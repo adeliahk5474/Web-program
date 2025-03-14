@@ -16,31 +16,10 @@ jobs:
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
           input-path: 'pemrogram.zip'
-          output-path: '${{ github.workspace }}'  # Ekstrak langsung ke root
+          output-path: './pemrogram-web'  # Ekstrak langsung ke root
 
       - name: Extract app.zip
         uses: hoatruongdev09/extract-zip-github-action@v1.2
         with:
           input-path: 'app.zip'
-          output-path: '${{ github.workspace }}'  # Ekstrak langsung ke root
-
-      - name: Check remote URL
-        run: git remote -v
-
-      - name: Remove lock files
-        run: |
-          rm -f .git/index.lock
-
-      - name: Commit and push extracted files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          if ! git diff --cached --quiet; then
-            git commit -m "Add extracted files" || echo "Commit failed"
-            git push || echo "Push failed"
-          else
-            echo "No changes to commit."
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          output-path: './pemrogram-web'  # Ekstrak langsung ke root
